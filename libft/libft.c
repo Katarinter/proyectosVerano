@@ -1,4 +1,5 @@
 #include <unistd.h>
+#include <stddef.h>
 
 void ft_putchar(char c)
 {
@@ -78,3 +79,72 @@ int ft_isalnum(int c)
     else
         return 0;    
 }
+
+size_t ft_strlen(const char *s)
+{
+	size_t i;
+    
+    i = 0;
+    while (s[i] != '\0')
+        i++;
+    return (--i);
+}
+
+char *ft_strchr(const char *s, int c)
+{
+    int i;
+    
+    i = 0;
+    while (i++)
+        if (s[i] == c)
+            return (&s[i]);
+}
+
+char *ft_strrchr(const char *s, int c)
+{
+    int i;
+    
+    i = ft_strlen(s);
+    while (--i)
+        if (s[i] == c)
+            return (&s[i]);
+}
+
+size_t ft_strlcpy(char *dst, const char *src, size_t size)
+{
+    size_t i;
+
+    i = 0;
+    while ((i < size) && (src[i] != 0))
+        dst[i] = src[i++];
+    return (ft_strlen(src));
+}
+
+size_t ft_strlcat(char *dst, const char *src, size_t size)
+{
+    size_t i;
+    size_t j;
+
+    i = 0;
+    j = ft_strlen(dst);
+    while ((i < size) && (src[i] != 0))
+        dst[j++] = src[i++];
+    return (ft_strlen(src) + ft_strlen(dst));
+}
+
+int ft_tolower(int c)
+{
+    if (c >= 'A' && c <= 'Z')
+        c -= 32;
+    return (c);
+}
+
+int ft_toupper(int c)
+{
+    if (c >= 'a' && c <= 'z')
+        c += 32;
+    return (c);
+}
+
+
+
